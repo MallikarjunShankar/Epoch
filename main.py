@@ -6,17 +6,15 @@ from visualization.visualizer import Visualizer
 def main():
     sim_state = initialize_simulation(CONFIG)
 
-    # ✅ Pass world, not config
     visualizer = Visualizer(sim_state["world"])
 
     def state_provider():
         nonlocal sim_state
         sim_state = simulation_step(sim_state, CONFIG)
 
-        # TEMP structure to satisfy visualizer
         return {
             "world": sim_state["world"],
-            "agents": [],        # Stage 1 will fill this
+            "agents": sim_state["agents"],
             "alliances": [],
             "trades": [],
             "conflicts": [],

@@ -4,5 +4,8 @@ CONFIG = {
 
     "resource_spawn_rate": 5,
     "resource_max_amount": 20,
-    "resource_decay_rate": 0.01
+    "resource_decay_rate": 0.01,
+
+    "initial_agent_count": 50,
+    "energy_decay": 0.5
 }
