@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+.vscode/
+
+.DS_Store
+Thumbs.db
+
+*.log
+
+build/
+dist/
+*.egg-info/
+
+*.tmp
+
+data/*.json
+data/*.csv
