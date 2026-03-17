@@ -13,7 +13,7 @@ BACKGROUND_COLOR = (25, 25, 25)
 CAMERA_MOVE_SPEED = 20
 
 class Visualizer:
-    def __Init__(self, world):
+    def __init__(self, world):
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Epoch")
@@ -64,24 +64,25 @@ class Visualizer:
         self.screen.fill(BACKGROUND_COLOR)
         
         self.resource_renderer.draw(
-            self.screen,
-            world["resources"],
-            self.camera
-        )
+        self.screen,
+        world["resources"],
+        self.camera
+    )
 
         self.social_renderer.draw(
-            self.screen,
-            agents,
-            alliances,
-            trades,
-            conflicts,
-            self.camera
-        )
+        self.screen,
+        agents,
+        alliances,
+        trades,
+        conflicts,
+        self.camera
+    )
 
         self.agent_renderer.draw(
-            self.screen,
-            stats
-        )
+        self.screen,
+        agents,
+        self.camera
+)
 
         pygame.display.flip()
 
