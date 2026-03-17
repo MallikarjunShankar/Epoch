@@ -10,19 +10,20 @@ def main():
 
     def state_provider():
         nonlocal sim_state
-        sim_state = simulation_step(sim_state, CONFIG)
 
+        sim_state = simulation_step(sim_state, CONFIG)
+        print("Agents:", len(sim_state["agents"]))
+        
         return {
             "world": sim_state["world"],
             "agents": sim_state["agents"],
-            "alliances": [],
-            "trades": [],
-            "conflicts": [],
-            "stats": {}
+            "alliances": sim_state["alliances"],
+            "trades": sim_state["trades"],
+            "conflicts": sim_state["conflicts"],
+            "stats": sim_state["stats"]
         }
 
     visualizer.run(state_provider)
-
 
 if __name__ == "__main__":
     main()
