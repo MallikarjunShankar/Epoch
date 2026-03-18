@@ -1,7 +1,9 @@
 import pygame
+import random
 
 BASE_AGENT_RADIUS = 3
 DEFAULT_AGENT_COLOR = (200, 200, 200)
+MAX_RENDER_AGENTS = 500
 
 STATE_COLORS = {
     "neutral": None,
@@ -52,5 +54,7 @@ class AgentRenderer:
             )
     
     def draw(self, screen, agents, camera):
+        if len(agents) > MAX_RENDER_AGENTS:
+            agents = random.sample(agents, MAX_RENDER_AGENTS)
         for agent in agents:
             self.draw_agent(screen, agent, camera)

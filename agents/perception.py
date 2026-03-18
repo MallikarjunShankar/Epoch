@@ -1,21 +1,29 @@
-import math
+import random
 
-def find_nearest_resource(agent, world, vision_radius = 50):
+MAX_CHECKS = 40
+
+
+def find_nearest_resource(agent, world, vision_radius=80):
     ax, ay = agent["position"]
-    closest = None
-    min_dist = float("inf")
+    resources = world["resources"]
 
-    for i, (x, y, amount) in enumerate(world["resources"]):
+    if not resources:
+        return None
+
+    best_pos = None
+    best_dist = float("inf")
+
+    checks = min(MAX_CHECKS, len(resources))
+
+    for _ in range(checks):
+        x, y, _ = resources[random.randint(0, len(resources) - 1)]
+
         dx = x - ax
         dy = y - ay
-        dist = math.sqrt(dx * dx + dy * dy)
+        dist = dx * dx + dy * dy
 
-        if dist < vision_radius and dist < min_dist:
-            min_dist = dist
-            closest = {
-                "index": i,
-                "position": (x, y),
-                "amount": amount
-            }
+        if dist < vision_radius * vision_radius and dist < best_dist:
+            best_dist = dist
+            best_pos = (x, y)
 
-    return closest
+    return best_pos

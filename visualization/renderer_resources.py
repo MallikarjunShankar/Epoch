@@ -1,7 +1,9 @@
 import pygame
+import random
 
 BASE_RESOURCE_SIZE = 2
 RESOURCE_COLOR_LOW = (40, 120, 40)
+MAX_RENDER_RESOURCES = 500
 RESOURCE_COLOR_MED = (60, 180, 60)
 RESOURCE_COLOR_HIGH = (100, 255, 100)
 
@@ -39,6 +41,8 @@ class ResourceRenderer:
         )
 
     def draw(self, screen, resources, camera):
+        if len(resources) > MAX_RENDER_RESOURCES:
+            resources = random.sample(resources, MAX_RENDER_RESOURCES)
         for x, y, amount in resources:
             self.draw_resource(
                 screen,
